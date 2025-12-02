@@ -6,15 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.project2.database.RandomlyRepository;
 import com.example.project2.database.entities.User;
-import com.example.project2.databinding.ActivityLoginBinding;
 import com.example.project2.databinding.ActivitySignUpBinding;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -37,15 +32,30 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = binding.userNameSignUpEditText.getText().toString().trim();   // trim
                 String password = binding.passwordSignUpEditText.getText().toString().trim();   // trim
 
-                // creates user with created username and password
+                createAccount(username, password);
+
+            }
+        });
+    }
+
+    /*
+    * Checks if username already exits, if it does not then create user with
+    * username and password passed through
+    * If the username already exits displays a very generous text :>
+     */
+    private void createAccount(String username, String password) {
+        repository.getUserByUserName(username).observe(this, existing -> {
+            if (existing == null) {
                 User admin = new User(username,password);
                 admin.setAdmin(true);
                 repository.insertUser(admin);
 
-                // Launches login activity
                 Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "login clicked", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(this, "Account Successfully Created!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "THIS ACCOUNT ALREADY EXITS LOSER", Toast.LENGTH_SHORT).show();
             }
         });
     }
