@@ -39,7 +39,7 @@
         android:layout_width="220dp"
         android:layout_height="80dp"
         android:layout_marginTop="25dp"
-        android:text="Sign in"
+        android:text="Sign up"
         android:textSize="36sp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
