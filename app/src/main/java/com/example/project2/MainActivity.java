@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         binding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = SignUpActivity.signUpIntentFactory(getApplicationContext());
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), "sign in clicked", Toast.LENGTH_SHORT).show();
             }
         });
