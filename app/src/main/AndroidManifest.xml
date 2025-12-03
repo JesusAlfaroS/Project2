@@ -12,27 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
         <!-- Landing Page -->
         <activity
             android:name=".LandingPageActivity"
-            android:exported="false" />
-
-        <!-- Login Page -->
+            android:exported="false" /> <!-- Login Page -->
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
-
-        <!-- Main / Launcher Activity -->
+            android:exported="false" /> <!-- Main / Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

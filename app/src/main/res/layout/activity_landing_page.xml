@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/usernameText"
-        android:text="username"
+        android:text="@string/username"
         android:textSize="20sp"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
