@@ -32,8 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = binding.userNameSignUpEditText.getText().toString().trim();   // trim
                 String password = binding.passwordSignUpEditText.getText().toString().trim();   // trim
 
+                // calls createAccount method with username and password passed through
                 createAccount(username, password);
-
             }
         });
     }
@@ -47,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         repository.getUserByUserName(username).observe(this, existing -> {
             if (existing == null) {
                 User admin = new User(username,password);
-                admin.setAdmin(true);
+                admin.setAdmin(false);
                 repository.insertUser(admin);
 
                 Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
@@ -55,10 +55,11 @@ public class SignUpActivity extends AppCompatActivity {
 
                 Toast.makeText(this, "Account Successfully Created!", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "THIS ACCOUNT ALREADY EXITS LOSER", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "THIS ACCOUNT ALREADY EXISTS", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     static Intent signUpIntentFactory(Context context) {
         return new Intent(context, SignUpActivity.class);

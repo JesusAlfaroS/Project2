@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // sign up (placeholder)
-        binding.newUserSignUpTextView.setOnClickListener(new View.OnClickListener() {
+        binding.newUserSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) { toastMaker("Sign-up not implemented yet"); }
         });
     }

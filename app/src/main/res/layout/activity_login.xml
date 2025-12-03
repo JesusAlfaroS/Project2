@@ -75,11 +75,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
 
-    <TextView
-        android:id="@+id/newUserSignUpTextView"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/newUserSignUpButton"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:background="@android:color/transparent"
         android:text="New User? Sign Up"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
