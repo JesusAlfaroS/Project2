@@ -5,4 +5,9 @@
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="already_have_an_account_log_in">Already have an account? Log In</string>
+    <string name="today_s_challenge">Today\'s challenge</string>
+    <string name="your_answer">Your answer</string>
+    <string name="welcome_to_randomly">Welcome to Randomly</string>
+    <string name="log_in">Log in</string>
+    <string name="submit">Submit</string>
 </resources>

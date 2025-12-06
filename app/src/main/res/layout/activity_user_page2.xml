@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserPageActivity">
+
+    <TextView
+        android:id="@+id/userPageTitleTextView"
+        android:layout_width="245dp"
+        android:layout_height="43dp"
+        android:gravity="center"
+        android:text="@string/today_s_challenge"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="75dp" />
+
+    <EditText
+        android:id="@+id/userPageAnswerEditText"
+        android:layout_width="282dp"
+        android:layout_height="46dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:hint="@string/your_answer"
+        android:inputType="textPassword"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPageChallengeTextView" />
+
+    <TextView
+        android:id="@+id/userPageChallengeTextView"
+        android:layout_width="316dp"
+        android:layout_height="164dp"
+        android:text="from DB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="146dp" />
+
+    <Button
+        android:id="@+id/userPageSubmitButton"
+        android:layout_width="182dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="@string/submit"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPageAnswerEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
