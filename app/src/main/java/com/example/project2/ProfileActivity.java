@@ -65,6 +65,15 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        // logout
+        binding.logoutButton.setOnClickListener(v -> {
+            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+            finish();
+        });
+
 
     }
 
