@@ -3,6 +3,8 @@ package com.example.project2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         repository = RandomlyRepository.getRepository(getApplication());
 
+        // gets user Id
         int userId = getIntent().getIntExtra(LoginActivity.EXTRA_USER_ID, -1);
         if (userId == -1) {
             startActivity(new Intent(this, MainActivity.class));
@@ -34,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
+        // retrieves user by id and displays their username and role
         repository.getUserByUserId(userId).observe(this, user -> {
             if (user == null) {
                 startActivity(new Intent(this, MainActivity.class));
@@ -44,6 +48,24 @@ public class ProfileActivity extends AppCompatActivity {
             boolean isAdmin = user.isAdmin();
             binding.role.setText(isAdmin ? "Admin" : "User");
         });
+
+        // When 'Back' is clicked, take user back to LandingPageActivity
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // When 'Change Password' is clicked, take user to PasswordActivity
+        binding.changePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     static Intent profileIntentFactory(Context context) {
