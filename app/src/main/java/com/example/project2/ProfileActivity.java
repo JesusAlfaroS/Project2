@@ -41,6 +41,8 @@ public class ProfileActivity extends AppCompatActivity {
                 return;
             }
             binding.userNameText.setText(user.getUsername());
+            boolean isAdmin = user.isAdmin();
+            binding.role.setText(isAdmin ? "Admin" : "User");
         });
     }
 
