@@ -27,6 +27,25 @@ public class PasswordActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = RandomlyRepository.getRepository(getApplication());
+
+        // gets user Id
+        int userId = getIntent().getIntExtra(LoginActivity.EXTRA_USER_ID, -1);
+        if (userId == -1) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
+
+        // retrieves user by id and assigns user to current user
+        repository.getUserByUserId(userId).observe(this, user -> {
+            if (user == null) {
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                return;
+            }
+            boolean isAdmin = user.isAdmin();
+            currentUser = user;
+        });
     }
 
     static Intent passwordIntentFactory(Context context, int userId) {
