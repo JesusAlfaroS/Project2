@@ -24,6 +24,7 @@ public class UserPageActivity extends AppCompatActivity {
     private Challenge currentChallenge;
     private CountDownTimer countDownTimer;
     private boolean hasAnsweredThisChallenge = false;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class UserPageActivity extends AppCompatActivity {
         repository = RandomlyRepository.getRepository(getApplication());
 
         // 1) Figure out which user is logged in
-        int userId = getIntent().getIntExtra(LoginActivity.EXTRA_USER_ID, -1);
+        userId = getIntent().getIntExtra(LoginActivity.EXTRA_USER_ID, -1);
         if (userId == -1) {
             userId = Prefs.getLoggedInUserId(this);
         }
@@ -82,12 +83,9 @@ public class UserPageActivity extends AppCompatActivity {
         binding.userPageSubmitButton.setOnClickListener(v -> handleSubmit());
 
         // 5) LOG OUT
-        binding.userPageLogoutButton.setOnClickListener(v -> {
-            Prefs.clearLoggedInUser(this);
-            Intent i = LoginActivity.loginIntentFactory(this);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-            finish();
+        binding.profile.setOnClickListener(v -> {
+            Intent intent = ProfileActivity.profileIntentFactory(this,userId);
+            startActivity(intent);
         });
 
         // 6) VIEW LEADERBOARD (NEW)
