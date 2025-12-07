@@ -107,4 +107,10 @@ public class RandomlyRepository {
         }
         return null;
     }
+
+    public void updateUser(User user){
+        RandomlyDatabase.databaseWriteExecutor.execute(()-> {
+            userDAO.update(user);
+        });
+    }
 }

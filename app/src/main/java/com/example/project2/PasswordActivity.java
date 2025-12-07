@@ -3,6 +3,8 @@ package com.example.project2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +47,22 @@ public class PasswordActivity extends AppCompatActivity {
             }
             boolean isAdmin = user.isAdmin();
             currentUser = user;
+        });
+
+        binding.changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String currentPassword = binding.currentPasswordEditText.getText().toString().trim();
+                String newPassword = binding.newPasswordEditText.getText().toString().trim();
+
+                if(currentPassword.equals(currentUser.getPassword())){
+                    currentUser.setPassword(newPassword);
+                    repository.updateUser(currentUser);
+                    Toast.makeText(getApplicationContext(), "Password Changed!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Current Password Incorrect", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
 

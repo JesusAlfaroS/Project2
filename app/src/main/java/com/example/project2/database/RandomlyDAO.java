@@ -5,8 +5,10 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.project2.database.entities.Randomly;
+import com.example.project2.database.entities.User;
 
 import java.util.List;
 
@@ -25,4 +27,5 @@ public interface RandomlyDAO {
 
     @Query("SELECT * FROM gymLogTable WHERE userId = :loggedInUserId ORDER BY date DESC")
     LiveData<List<Randomly>> getRecordsByUserIdLiveData(int loggedInUserId);
+
 }
