@@ -1,5 +1,7 @@
 package com.example.project2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -25,5 +27,11 @@ public class PasswordActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = RandomlyRepository.getRepository(getApplication());
+    }
+
+    static Intent passwordIntentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, PasswordActivity.class);
+        intent.putExtra(LoginActivity.EXTRA_USER_ID,userId);
+        return intent;
     }
 }
