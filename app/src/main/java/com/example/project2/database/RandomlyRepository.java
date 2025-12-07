@@ -10,7 +10,6 @@ import com.example.project2.database.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -106,5 +105,11 @@ public class RandomlyRepository {
             Log.i(MainActivity.TAG, "Problem when getting all GymLogs in repository");
         }
         return null;
+    }
+
+    public void updateUser(User user){
+        RandomlyDatabase.databaseWriteExecutor.execute(()-> {
+            userDAO.update(user);
+        });
     }
 }

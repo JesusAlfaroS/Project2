@@ -11,4 +11,17 @@
     <string name="welcome_to_randomly">Welcome to Randomly</string>
     <string name="log_in">Log in</string>
     <string name="submit">Submit</string>
+    <string name="login_to_your_account">Login to your Account</string>
+    <string name="welcome_back_to_your_account">Welcome back to your account.</string>
+    <string name="login">Login</string>
+    <string name="new_user_sign_up">New User? Sign Up</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="profile">PROFILE</string>
+    <string name="back">Back</string>
+    <string name="role">Role:</string>
+    <string name="roletext">RoleText</string>
+    <string name="log_out">Log out</string>
+    <string name="usernameDisplay">Username:</string>
+    <string name="usernametext">UsernameText</string>
 </resources>

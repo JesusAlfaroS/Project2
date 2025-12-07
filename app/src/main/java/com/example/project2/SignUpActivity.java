@@ -1,3 +1,10 @@
+/*
+ * @title SingUpActivity.java
+ * @author Jesus Alfaro-Suarez
+ * @since 12-6-25
+ * Creates an activity that allows the user to create an account.
+ */
+
 package com.example.project2;
 
 import android.content.Context;
@@ -60,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-
+    // sing up intent factory
     static Intent signUpIntentFactory(Context context) {
         return new Intent(context, SignUpActivity.class);
     }

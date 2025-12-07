@@ -1,3 +1,11 @@
+/*
+ * @title ProfileActivity.java
+ * @author Jesus Alfaro-Suarez
+ * @since 12-3-25
+ * Creates an activity that displays the username and role of the user,
+ * allows the user to change their password and logout.
+ */
+
 package com.example.project2;
 
 import android.content.Context;
@@ -61,6 +69,8 @@ public class ProfileActivity extends AppCompatActivity {
         binding.changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = PasswordActivity.passwordIntentFactory(getApplicationContext(),userId);
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
             }
         });
