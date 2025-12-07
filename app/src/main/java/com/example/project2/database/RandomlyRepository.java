@@ -132,4 +132,11 @@ public class RandomlyRepository {
     public LiveData<Challenge> getLatestChallenge() {
         return challengeDAO.getLatestChallenge();
     }
+
+    // ---------- NEW: Leaderboard helpers ----------
+
+    /** All users ordered by points descending (for leaderboard). */
+    public LiveData<List<User>> getAllUsersByPoints() {
+        return userDAO.getAllUsersByPoints();
+    }
 }

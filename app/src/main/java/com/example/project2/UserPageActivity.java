@@ -89,6 +89,12 @@ public class UserPageActivity extends AppCompatActivity {
             startActivity(i);
             finish();
         });
+
+        // 6) VIEW LEADERBOARD (NEW)
+        binding.userPageLeaderboardButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, LeaderboardActivity.class);
+            startActivity(i);
+        });
     }
 
     // ---------- Timer logic ----------
@@ -162,7 +168,7 @@ public class UserPageActivity extends AppCompatActivity {
         int score = 0;
         if (isCorrect) {
             // simple decaying score: 1000 at t=0 → 10 at t>=30s
-            score = (int) Math.max(10, 1000 - (elapsed / 30)); // or your previous formula
+            score = (int) Math.max(10, 1000 - (elapsed / 30));
         }
 
         if (score > 0) {
