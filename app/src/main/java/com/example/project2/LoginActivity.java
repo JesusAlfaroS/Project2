@@ -1,3 +1,10 @@
+/*
+ * @title LoginActivity.java
+ * @author Jesus Alfaro-Suarez
+ * @since 12-6-25
+ * Creates an activity that takes in a username and password to log the user in.
+ */
+
 package com.example.project2;
 
 import android.content.Context;
@@ -96,10 +103,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // Creates a Toast message
     private void toastMaker(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    // Login Intent Factory
     static Intent loginIntentFactory(Context context) {
         return new Intent(context, LoginActivity.class);
     }

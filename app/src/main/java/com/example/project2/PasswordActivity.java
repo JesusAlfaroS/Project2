@@ -1,3 +1,10 @@
+/*
+ * @title Password.java
+ * @author Jesus Alfaro-Suarez
+ * @since 12-6-25
+ * Allows the user to change their password by entering their current and new password
+ */
+
 package com.example.project2;
 
 import android.content.Context;
@@ -49,6 +56,7 @@ public class PasswordActivity extends AppCompatActivity {
             currentUser = user;
         });
 
+        // Changes username as long as current password is the same
         binding.changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
