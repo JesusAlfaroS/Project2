@@ -48,12 +48,9 @@ public class LandingPageActivity extends AppCompatActivity {
         });
 
         // LOGOUT button
-        binding.logoutButton.setOnClickListener(v -> {
-            Prefs.clearLoggedInUser(this);
-            Intent i = LoginActivity.loginIntentFactory(this);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-            finish();
+        binding.profile.setOnClickListener(v -> {
+            Intent intent = ProfileActivity.profileIntentFactory(this,userId);
+            startActivity(intent);
         });
     }
 

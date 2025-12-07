@@ -77,6 +77,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         // logout
         binding.logoutButton.setOnClickListener(v -> {
+            Prefs.clearLoggedInUser(this);
+
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -87,7 +89,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    static Intent profileIntentFactory(Context context) {
-        return new Intent(context,ProfileActivity.class);
+    static Intent profileIntentFactory(Context context,int userId) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        intent.putExtra(LoginActivity.EXTRA_USER_ID,userId);
+        return intent;
     }
 }

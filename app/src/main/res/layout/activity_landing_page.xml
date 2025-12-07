@@ -36,10 +36,10 @@
 
     <!-- Logout button -->
     <Button
-        android:id="@+id/logoutButton"
+        android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGOUT"
+        android:text="@string/profile"
         android:layout_marginTop="16dp" />
 
 </LinearLayout>
