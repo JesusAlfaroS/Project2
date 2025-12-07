@@ -8,44 +8,38 @@
     android:layout_height="match_parent"
     tools:context=".LandingPageActivity">
 
+    <!-- Admin username -->
     <TextView
-        android:id="@+id/welcomeTitle"
-        android:text="Welcome to Randomly"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:id="@+id/landingUsernameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/usernameText"
-        android:text="@string/username"
+        android:layout_height="wrap_content"
+        android:text="admin2"
         android:textSize="20sp"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textStyle="bold" />
 
+    <!-- Role -->
     <TextView
-        android:id="@+id/roleText"
-        android:text="User"
-        android:textSize="16sp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/landingRoleTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Admin"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp" />
 
-    <!-- Admin-only button: invisible at runtime unless admin; visible in editor -->
+    <!-- Create Challenge button -->
     <Button
-        android:id="@+id/adminAreaButton"
-        android:text="Create Challenge"
-        android:layout_marginTop="24dp"
-        android:visibility="invisible"
-        tools:visibility="visible"
+        android:id="@+id/createChallengeButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="CREATE CHALLENGE"
+        android:layout_marginTop="32dp" />
 
+    <!-- Logout button -->
     <Button
         android:id="@+id/logoutButton"
-        android:text="Logout"
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="LOGOUT"
+        android:layout_marginTop="16dp" />
+
 </LinearLayout>
