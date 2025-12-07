@@ -24,7 +24,6 @@ public interface UserDAO {
     @Query("SELECT * FROM " + RandomlyDatabase.USER_TABLE + " ORDER BY username")
     LiveData<List<User>> getAllUsers();
 
-
     @Query("DELETE from " + RandomlyDatabase.USER_TABLE)
     void deleteAll();
 
@@ -34,6 +33,5 @@ public interface UserDAO {
     @Query("SELECT * from " + RandomlyDatabase.USER_TABLE + " WHERE id == :userId")
     LiveData<User> getUserByUserId(int userId);
 
-    @Update
-    void update(User user);
+    @Update void update(User user);
 }

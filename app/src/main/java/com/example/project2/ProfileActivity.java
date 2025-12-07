@@ -61,6 +61,8 @@ public class ProfileActivity extends AppCompatActivity {
         binding.changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = PasswordActivity.passwordIntentFactory(getApplicationContext(),userId);
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
             }
         });

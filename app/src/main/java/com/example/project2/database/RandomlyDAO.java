@@ -27,5 +27,4 @@ public interface RandomlyDAO {
 
     @Query("SELECT * FROM gymLogTable WHERE userId = :loggedInUserId ORDER BY date DESC")
     LiveData<List<Randomly>> getRecordsByUserIdLiveData(int loggedInUserId);
-
 }

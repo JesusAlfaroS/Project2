@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = binding.passwordEditText.getText().toString().trim();  // trim
                 if (password.equals(user.getPassword())) {
                     // success → go to Landing and pass userId
-                    Intent i = new Intent(this, LandingPageActivity.class);
+                    Intent i = new Intent(this, ProfileActivity.class);
                     i.putExtra(EXTRA_USER_ID, user.getId());
                     startActivity(i);
                     finish();
