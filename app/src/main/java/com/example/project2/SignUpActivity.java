@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = binding.userNameSignUpEditText.getText().toString().trim();   // trim
                 String password = binding.passwordSignUpEditText.getText().toString().trim();   // trim
 
-                // calls createAccount method with username and password passed through
+                // calls the  createAccount method with username and password passed through
                 createAccount(username, password);
             }
         });
