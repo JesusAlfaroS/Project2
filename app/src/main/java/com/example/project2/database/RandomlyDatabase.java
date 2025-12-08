@@ -30,11 +30,11 @@ public abstract class RandomlyDatabase extends RoomDatabase {
 
     // Literal names used in SQL strings elsewhere
     public static final String USER_TABLE = "usertable";
-    public static final String RANDOMLY_TABLE = "gymLogTable";
+    public static final String RANDOMLY_TABLE = "randomlyTable";
     public static final String CHALLENGE_TABLE = "challengeTable";
 
     // Keep existing filename (typo preserved to avoid changing on-disk DB name)
-    private static final String DATABASE_NAME = "GymLogDatabse";
+    private static final String DATABASE_NAME = "RandomlyDatabse";
 
     private static volatile RandomlyDatabase INSTANCE;
 
