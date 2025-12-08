@@ -43,7 +43,7 @@
             android:name=".PasswordActivity"
             android:exported="false" />
 
-        <!-- CREATE CHALLENGE PAGE (Admin) -->
+        <!-- CREATE CHALLENGE PAGE (Admin side) -->
         <activity
             android:name=".CreateChallengeActivity"
             android:exported="false" />
