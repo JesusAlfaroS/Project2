@@ -18,7 +18,7 @@ public interface RandomlyDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Randomly randomly);
 
-    // use literal table name to avoid annotation-processor complaints
+    // use literal table name to avoid annotation processor complaints
     @Query("SELECT * FROM Randomly ORDER BY date DESC")
     List<Randomly> getAllRecords();
 
