@@ -20,7 +20,7 @@ public class Prefs {
         return prefs.getInt(KEY_USER_ID, -1);
     }
 
-    // Clear stored user id (logout)
+    // Clear the stored user id (logout)
     public static void clearLoggedInUser(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE);
         prefs.edit().remove(KEY_USER_ID).apply();
