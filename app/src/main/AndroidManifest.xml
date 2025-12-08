@@ -18,7 +18,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
 
-        <!-- SIGN UP -->
+        <!-- SIGN UP PAGE -->
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
