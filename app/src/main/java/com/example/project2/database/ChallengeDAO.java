@@ -19,7 +19,7 @@ public interface ChallengeDAO {
     @Query("SELECT * FROM challengeTable ORDER BY createdAtMillis DESC LIMIT 1")
     LiveData<Challenge> getLatestChallenge();
 
-    // all challenges (if you ever want history)
+    // all challenges (if you ever want history LATER)
     @Query("SELECT * FROM challengeTable ORDER BY createdAtMillis DESC")
     LiveData<List<Challenge>> getAllChallenges();
 
