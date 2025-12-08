@@ -46,7 +46,7 @@ public class UserPageActivity extends AppCompatActivity {
             return;
         }
 
-        // 2) Observe user from DB (for username + points)
+        // 2) Observe user from DB (for username and points)
         repository.getUserByUserId(userId).observe(this, user -> {
             if (user == null) {
                 Toast.makeText(this, "User not found, please log in again.", Toast.LENGTH_SHORT).show();
