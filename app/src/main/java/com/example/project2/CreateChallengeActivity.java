@@ -58,7 +58,7 @@ public class CreateChallengeActivity extends AppCompatActivity {
 
         long now = System.currentTimeMillis();
 
-        // build Challenge entity
+        // build Challenge entity hehe
         Challenge challenge = new Challenge(question, correctAnswer, now);
 
         // save to Room via repository

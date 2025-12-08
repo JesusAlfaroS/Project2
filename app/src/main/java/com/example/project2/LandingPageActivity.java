@@ -33,7 +33,7 @@ public class LandingPageActivity extends AppCompatActivity {
             return;
         }
 
-        // Load the admin user and display username + role
+        // Load the admin user and display username + any role
         repository.getUserByUserId(userId).observe(this, user -> {
             if (user != null) {
                 bindUser(user);
