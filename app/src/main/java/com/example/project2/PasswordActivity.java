@@ -72,6 +72,15 @@ public class PasswordActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Back button
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = ProfileActivity.profileIntentFactory(getApplicationContext(),userId);
+                startActivity(intent);
+            }
+        });
     }
 
     static Intent passwordIntentFactory(Context context, int userId) {

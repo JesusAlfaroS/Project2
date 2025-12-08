@@ -43,6 +43,14 @@ public class SignUpActivity extends AppCompatActivity {
                 createAccount(username, password);
             }
         });
+
+        binding.accountLoginTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     /*
@@ -66,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
 
     // sing up intent factory
     static Intent signUpIntentFactory(Context context) {
