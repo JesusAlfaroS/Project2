@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Show the original welcome screen with LOG IN / SIGN UP buttons
+    // Show the actual original welcome screen with LOG IN / SIGN UP buttons
     private void showWelcomeScreen() {
         setContentView(R.layout.activity_main);
 
