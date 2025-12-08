@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.project2.MainActivity;
+import com.example.project2.database.entities.Challenge;
 import com.example.project2.database.entities.Randomly;
 import com.example.project2.database.entities.User;
 import com.example.project2.database.typeConverters.LocalDateTypeConverter;
@@ -20,18 +20,21 @@ import java.util.concurrent.Executors;
 
 @TypeConverters(LocalDateTypeConverter.class)
 @Database(
-        entities = { Randomly.class, User.class },
-        version = 3,                 // <-- bumped so the seed runs
+        entities = { Randomly.class, User.class, Challenge.class },
+        version = 6,                 // ✅ bumped because we added User.points
         exportSchema = false
 )
 public abstract class RandomlyDatabase extends RoomDatabase {
 
+    private static final String TAG = "RandomlyDatabase";
+
     // Literal names used in SQL strings elsewhere
     public static final String USER_TABLE = "usertable";
-    public static final String RANDOMLY_TABLE = "gymLogTable";
+    public static final String RANDOMLY_TABLE = "randomlyTable";
+    public static final String CHALLENGE_TABLE = "challengeTable";
 
     // Keep existing filename (typo preserved to avoid changing on-disk DB name)
-    private static final String DATABASE_NAME = "GymLogDatabse";
+    private static final String DATABASE_NAME = "RandomlyDatabse";
 
     private static volatile RandomlyDatabase INSTANCE;
 
@@ -63,7 +66,7 @@ public abstract class RandomlyDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            Log.i(MainActivity.TAG, "DATABASE CREATED!");
+            Log.i(TAG, "DATABASE CREATED!");
             databaseWriteExecutor.execute(() -> {
                 UserDAO dao = INSTANCE.userDAO();
 
@@ -86,4 +89,5 @@ public abstract class RandomlyDatabase extends RoomDatabase {
     // DAOs
     public abstract RandomlyDAO randomlyDAO();
     public abstract UserDAO userDAO();
+    public abstract ChallengeDAO challengeDAO();   // challenge DAO
 }

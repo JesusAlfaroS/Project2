@@ -2,8 +2,6 @@ package com.example.project2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +13,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private ActivityLandingPageBinding binding;
     private RandomlyRepository repository;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,43 +23,40 @@ public class LandingPageActivity extends AppCompatActivity {
 
         repository = RandomlyRepository.getRepository(getApplication());
 
-        // get the user id from LoginActivity
-        int userId = getIntent().getIntExtra(LoginActivity.EXTRA_USER_ID, -1);
+        // Get the logged in userId
+        userId = getIntent().getIntExtra(LoginActivity.EXTRA_USER_ID, -1);
         if (userId == -1) {
-            startActivity(new Intent(this, MainActivity.class));
+            // invalid session → go to login
+            Intent i = LoginActivity.loginIntentFactory(this);
+            startActivity(i);
             finish();
             return;
         }
 
-        // load user from DB
+        // Load the admin user and display username + role
         repository.getUserByUserId(userId).observe(this, user -> {
-            if (user == null) {
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-                return;
+            if (user != null) {
+                bindUser(user);
             }
-            bindUser(user);
         });
 
-        // admin-only action (stub)
-        binding.adminAreaButton.setOnClickListener(v ->
-                Toast.makeText(this, "Admin: create a challenge!", Toast.LENGTH_SHORT).show()
-        );
-
-        // logout
-        binding.logoutButton.setOnClickListener(v -> {
-            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, MainActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        // CREATE CHALLENGE button
+        binding.createChallengeButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, CreateChallengeActivity.class);
+            i.putExtra(LoginActivity.EXTRA_USER_ID, userId);
             startActivity(i);
-            finish();
+        });
+
+        // LOGOUT button
+        binding.profile.setOnClickListener(v -> {
+            Intent intent = ProfileActivity.profileIntentFactory(this,userId);
+            startActivity(intent);
         });
     }
 
     private void bindUser(User user) {
-        binding.usernameText.setText(user.getUsername());
-        boolean isAdmin = user.isAdmin();
-        binding.roleText.setText(isAdmin ? "Admin" : "User");
-        binding.adminAreaButton.setVisibility(isAdmin ? View.VISIBLE : View.INVISIBLE);
+        // These IDs MUST match your XML
+        binding.landingUsernameTextView.setText(user.getUsername());
+        binding.landingRoleTextView.setText(user.isAdmin() ? "Admin" : "User");
     }
 }

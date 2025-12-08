@@ -21,6 +21,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.project2.database.RandomlyRepository;
+import com.example.project2.database.entities.User;
 import com.example.project2.databinding.ActivityProfileBinding;
 import com.example.project2.databinding.ActivitySignUpBinding;
 
@@ -28,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
     private RandomlyRepository repository;
+    private User currentuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
                 return;
             }
+            currentuser = user;
             binding.userNameText.setText(user.getUsername());
             boolean isAdmin = user.isAdmin();
             binding.role.setText(isAdmin ? "Admin" : "User");
@@ -71,12 +74,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = PasswordActivity.passwordIntentFactory(getApplicationContext(),userId);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
             }
         });
 
         // logout
         binding.logoutButton.setOnClickListener(v -> {
+            Prefs.clearLoggedInUser(this);
+
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this, MainActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -84,10 +88,28 @@ public class ProfileActivity extends AppCompatActivity {
             finish();
         });
 
+        // Back Button
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentuser.isAdmin()){
+                    Intent i = new Intent(ProfileActivity.this, LandingPageActivity.class);
+                    i.putExtra(LoginActivity.EXTRA_USER_ID, userId);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(ProfileActivity.this, UserPageActivity.class);
+                    i.putExtra(LoginActivity.EXTRA_USER_ID, userId);
+                    startActivity(i);
+                }
+            }
+        });
+
 
     }
 
-    static Intent profileIntentFactory(Context context) {
-        return new Intent(context,ProfileActivity.class);
+    static Intent profileIntentFactory(Context context,int userId) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        intent.putExtra(LoginActivity.EXTRA_USER_ID,userId);
+        return intent;
     }
 }

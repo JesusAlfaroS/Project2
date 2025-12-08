@@ -24,4 +24,5 @@
     <string name="log_out">Log out</string>
     <string name="usernameDisplay">Username:</string>
     <string name="usernametext">UsernameText</string>
+    <string name="back_to_profile">Back to profile</string>
 </resources>

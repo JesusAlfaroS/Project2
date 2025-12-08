@@ -2,48 +2,71 @@ package com.example.project2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.project2.databinding.ActivityMainBinding;
+import com.example.project2.database.RandomlyRepository;
+import com.example.project2.database.entities.User;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "DAC_GYMLOG";
-
-    private ActivityMainBinding binding;
+    private RandomlyRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
-        binding.loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "login clicked", Toast.LENGTH_SHORT).show();
-            }
+        repository = RandomlyRepository.getRepository(getApplication());
+
+        // 1) Check if someone is already logged in
+        int savedUserId = Prefs.getLoggedInUserId(this);
+        if (savedUserId != -1) {
+            // Look up the user in the DB
+            repository.getUserByUserId(savedUserId).observe(this, user -> {
+                if (user == null) {
+                    // bad id → clear and show normal welcome screen
+                    Prefs.clearLoggedInUser(this);
+                    showWelcomeScreen();
+                } else {
+                    // valid user → jump straight to correct page
+                    goToHomeForUser(user);
+                }
+            });
+        } else {
+            // No saved session → normal welcome + buttons
+            showWelcomeScreen();
+        }
+    }
+
+    // Show the original welcome screen with LOG IN / SIGN UP buttons
+    private void showWelcomeScreen() {
+        setContentView(R.layout.activity_main);
+
+        Button loginButton = findViewById(R.id.loginButton);
+        Button signUpButton = findViewById(R.id.signUpButton);
+
+        loginButton.setOnClickListener(v -> {
+            Intent i = LoginActivity.loginIntentFactory(this);
+            startActivity(i);
         });
 
-        binding.signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = SignUpActivity.signUpIntentFactory(getApplicationContext());
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "sign in clicked", Toast.LENGTH_SHORT).show();
-            }
+        signUpButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, SignUpActivity.class);
+            startActivity(i);
         });
+    }
 
-
-
+    // Send the user to Admin page or User page
+    private void goToHomeForUser(User user) {
+        Intent i;
+        if (user.isAdmin()) {
+            i = new Intent(this, LandingPageActivity.class);
+        } else {
+            i = new Intent(this, UserPageActivity.class);
+        }
+        i.putExtra(LoginActivity.EXTRA_USER_ID, user.getId());
+        startActivity(i);
+        finish();   // don't come back to MainActivity when pressing back
     }
 }

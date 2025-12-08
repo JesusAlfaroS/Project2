@@ -8,7 +8,7 @@ import com.example.project2.database.typeConverters.LocalDateTypeConverter;
 
 import java.time.LocalDateTime;
 
-@Entity(tableName = "gymLogTable")
+@Entity(tableName = "Randomly")
 @TypeConverters(LocalDateTypeConverter.class)
 public class Randomly {
 

@@ -7,55 +7,150 @@
     android:layout_height="match_parent"
     tools:context=".UserPageActivity">
 
-    <TextView
-        android:id="@+id/userPageTitleTextView"
-        android:layout_width="245dp"
-        android:layout_height="43dp"
-        android:gravity="center"
-        android:text="@string/today_s_challenge"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="75dp" />
+    <!-- Username (top, centered) -->
+
+    <!-- Points under username -->
+
+    <!-- Title: Today's challenge -->
+
+    <!-- Timer text (e.g. Time left: 12s) -->
+
+    <!-- Challenge text from DB -->
+
+    <!-- Label: Your answer -->
+
+    <!-- User's answer input -->
+
+    <!-- Submit button -->
 
     <EditText
         android:id="@+id/userPageAnswerEditText"
-        android:layout_width="282dp"
-        android:layout_height="46dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:hint="@string/your_answer"
-        android:inputType="textPassword"
-        android:textSize="25sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Your answer"
+        android:inputType="numberDecimal"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userPageChallengeTextView" />
+        app:layout_constraintTop_toBottomOf="@id/userPageAnswerLabel" />
 
     <TextView
-        android:id="@+id/userPageChallengeTextView"
-        android:layout_width="316dp"
-        android:layout_height="164dp"
-        android:text="from DB"
+        android:id="@+id/userPagePointsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Points: 0"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="146dp" />
+        app:layout_constraintTop_toBottomOf="@id/userPageUsernameTextView" />
 
-    <Button
-        android:id="@+id/userPageSubmitButton"
-        android:layout_width="182dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:text="@string/submit"
-        android:textSize="36sp"
+    <TextView
+        android:id="@+id/userPageUsernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="username"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userPageTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Today's challenge"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPagePointsTextView" />
+
+    <Button
+        android:id="@+id/userPageSubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="SUBMIT"
+
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/userPageAnswerEditText" />
+
+    <TextView
+        android:id="@+id/userPageTimerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Time left: 30s"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPageTitleTextView" />
+
+    <Button
+        android:id="@+id/userPageLeaderboardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/red"
+        android:text="View Leaderboard"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile" />
+
+    <TextView
+        android:id="@+id/userPageChallengeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="No challenge yet. Please wait for admin."
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPageTimerTextView" />
+
+    <Button
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/red"
+        android:text="@string/profile"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPageSubmitButton" />
+
+    <TextView
+        android:id="@+id/userPageAnswerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Your answer"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPageChallengeTextView" />
+
+    <!-- Logout button -->
+
+    <!-- NEW: View Leaderboard button -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

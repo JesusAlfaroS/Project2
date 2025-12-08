@@ -19,12 +19,12 @@ public interface RandomlyDAO {
     void insert(Randomly randomly);
 
     // use literal table name to avoid annotation-processor complaints
-    @Query("SELECT * FROM gymLogTable ORDER BY date DESC")
+    @Query("SELECT * FROM Randomly ORDER BY date DESC")
     List<Randomly> getAllRecords();
 
-    @Query("SELECT * FROM gymLogTable WHERE userId = :loggedInUserId ORDER BY date DESC")
+    @Query("SELECT * FROM Randomly WHERE userId = :loggedInUserId ORDER BY date DESC")
     List<Randomly> getRecordsByUserId(int loggedInUserId);
 
-    @Query("SELECT * FROM gymLogTable WHERE userId = :loggedInUserId ORDER BY date DESC")
+    @Query("SELECT * FROM Randomly WHERE userId = :loggedInUserId ORDER BY date DESC")
     LiveData<List<Randomly>> getRecordsByUserIdLiveData(int loggedInUserId);
 }

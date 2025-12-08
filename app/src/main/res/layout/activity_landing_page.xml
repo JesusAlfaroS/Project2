@@ -1,51 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp"
     tools:context=".LandingPageActivity">
 
-    <TextView
-        android:id="@+id/welcomeTitle"
-        android:text="Welcome to Randomly"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!-- Admin username -->
 
-    <TextView
-        android:id="@+id/usernameText"
-        android:text="@string/username"
-        android:textSize="20sp"
+    <!-- Role -->
+
+    <!-- Create Challenge button -->
+
+    <!-- Logout button -->
+
+    <Button
+        android:id="@+id/createChallengeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/red"
+        android:text="CREATE CHALLENGE"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/landingRoleTextView"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <Button
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:backgroundTint="@color/red"
+        android:text="@string/profile"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/createChallengeButton"
+        tools:layout_editor_absoluteX="24dp" />
 
     <TextView
-        android:id="@+id/roleText"
-        android:text="User"
+        android:id="@+id/landingRoleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Admin"
         android:textSize="16sp"
-        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingUsernameTextView" />
+
+    <TextView
+        android:id="@+id/landingUsernameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="admin2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Admin-only button: invisible at runtime unless admin; visible in editor -->
-    <Button
-        android:id="@+id/adminAreaButton"
-        android:text="Create Challenge"
-        android:layout_marginTop="24dp"
-        android:visibility="invisible"
-        tools:visibility="visible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/logoutButton"
-        android:text="Logout"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

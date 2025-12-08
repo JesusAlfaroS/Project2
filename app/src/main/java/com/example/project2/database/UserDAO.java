@@ -33,5 +33,10 @@ public interface UserDAO {
     @Query("SELECT * from " + RandomlyDatabase.USER_TABLE + " WHERE id == :userId")
     LiveData<User> getUserByUserId(int userId);
 
-    @Update void update(User user);
+    @Update
+    void update(User user);
+
+    // ⭐ NEW: Get all users sorted by their total points (Leaderboard)
+    @Query("SELECT * FROM " + RandomlyDatabase.USER_TABLE + " ORDER BY points DESC")
+    LiveData<List<User>> getAllUsersByPoints();
 }
