@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         // 1) Check if someone is already logged in
         int savedUserId = Prefs.getLoggedInUserId(this);
         if (savedUserId != -1) {
-            // Look up the user in the DB
+            // Look up the user in the DBase
             repository.getUserByUserId(savedUserId).observe(this, user -> {
                 if (user == null) {
                     // bad id → clear and show normal welcome screen
