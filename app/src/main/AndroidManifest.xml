@@ -28,7 +28,7 @@
             android:name=".LandingPageActivity"
             android:exported="false" />
 
-        <!-- USER PAGE (Answer Challenge) -->
+        <!-- USER PAGE (Answer Challenge with) -->
         <activity
             android:name=".UserPageActivity"
             android:exported="false" />
