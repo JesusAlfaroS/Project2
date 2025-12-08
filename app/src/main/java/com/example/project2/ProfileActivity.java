@@ -21,6 +21,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.project2.database.RandomlyRepository;
+import com.example.project2.database.entities.User;
 import com.example.project2.databinding.ActivityProfileBinding;
 import com.example.project2.databinding.ActivitySignUpBinding;
 
@@ -28,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
     private RandomlyRepository repository;
+    private User currentuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
                 return;
             }
+            currentuser = user;
             binding.userNameText.setText(user.getUsername());
             boolean isAdmin = user.isAdmin();
             binding.role.setText(isAdmin ? "Admin" : "User");
@@ -86,6 +89,20 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         // Back Button
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentuser.isAdmin()){
+                    Intent i = new Intent(ProfileActivity.this, LandingPageActivity.class);
+                    i.putExtra(LoginActivity.EXTRA_USER_ID, userId);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(ProfileActivity.this, UserPageActivity.class);
+                    i.putExtra(LoginActivity.EXTRA_USER_ID, userId);
+                    startActivity(i);
+                }
+            }
+        });
 
 
     }
